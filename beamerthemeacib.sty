@@ -1,0 +1,126 @@
+\ProvidesPackage{beamerthemeacib}
+
+\RequirePackage{tikz}
+\RequirePackage{setspace}
+\RequirePackage{graphicx}
+\usetikzlibrary{positioning}
+
+% \useoutertheme{shadow}
+% \useoutertheme{split}
+
+
+\makeatletter
+% \newcommand{\event}[1]{#1}
+\def\event#1{\gdef\@event{#1}}
+\newcommand{\insertevent}{\@event}
+\makeatother
+
+
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{title}{size=\large}
+\setbeamerfont{frametitle}{size=\Large}
+\setbeamerfont{framesubtitle}{size=\small}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{institute}{size=\small}
+
+
+\setbeamertemplate{title page}{%
+    {%
+        \usebeamerfont{title}
+        \MakeUppercase\inserttitle
+    }
+    \par\medskip
+
+    {%
+        \rule{\linewidth}{1pt}
+    }
+    \par\medskip
+
+    {%
+        \usebeamerfont{author}
+        \insertauthor
+    }
+    \par\smallskip
+
+    {%
+        \usebeamerfont{date}
+        \insertdate
+    }
+    \par
+    {%
+        \usebeamerfont{institute}
+        \insertinstitute
+    }
+
+    % \begin{tikzpicture}[remember picture,overlay]
+    %     \node (aciblogo) [xshift=-20pt,yshift=-50pt] at (current page.center)
+    %     { \includegraphics[width=2cm]{img/logo_acib_500.png} };
+    %     \node (bokulogo) [right=of aciblogo]
+    %     { \includegraphics[width=2cm]{img/BOKU-Logo-Department-DBT-E.pdf} };
+    %     \node (bokulogo) [right=of bokulogo]
+    %     { \includegraphics[width=2cm]{img/biotop.png} };
+    % \end{tikzpicture}
+}
+
+
+\setbeamertemplate{background}{
+    \begin{tikzpicture}[remember picture,overlay]
+        \node (aciblogo) [xshift=22pt,yshift=12pt] at (current page.south west)
+        { \includegraphics[height=.5cm]{img/logo_acib_500.png} };
+        \node (bokulogo) [right=0.3cm of aciblogo]
+        { \includegraphics[height=.4cm]{img/BOKU-Logo-Department-DBT-E.pdf} };
+        \node (bokulogo) [right=0.3cm of bokulogo]
+        { \includegraphics[height=.4cm]{img/biotop.png} };
+
+        \draw [ultra thin] (current page.south east)++(0,.7cm) -- +(-.7\paperwidth,0);
+    \end{tikzpicture}
+}
+
+\setbeamertemplate{frametitle}{%
+    \begin{beamercolorbox}[ht=.9cm,wd=\paperwidth]{white}
+        \hspace{.5cm}
+        \begin{minipage}{.7\paperwidth}
+            \nointerlineskip
+            {%
+                % \usebeamercolor[fg]{frametitle}
+                \setstretch{0.8}
+                \usebeamerfont{frametitle}%
+                \strut\insertframetitle\strut\newline
+            }%
+            \ifx\insertframesubtitle\@empty\else%
+                {%
+                    \setstretch{0}%
+                    \usebeamerfont{framesubtitle}%
+                    \strut\insertframesubtitle\strut\par
+                }%
+            \fi%
+            % \medskip
+            \vskip-10pt%
+            {%
+                \rule{.9\paperwidth}{.3pt}%
+            }%
+        \end{minipage}
+        \begin{minipage}{.2\paperwidth}
+            \flushright
+            {\footnotesize\textit{\insertsectionhead}}\\[-8pt]
+            {\tiny\textit{\insertsubsectionhead}}
+        \end{minipage}
+    \end{beamercolorbox}
+}
+
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[sep=0.3cm,ht=.7cm,wd=\paperwidth]{white}
+        \hspace{.3\paperwidth}
+        \begin{minipage}{.53\paperwidth}
+        \insertauthor \quad --- \quad \insertevent\; \insertdate
+        \end{minipage}
+        \begin{minipage}{.1\paperwidth}
+            \flushright
+            \insertframenumber
+        \end{minipage}
+    \end{beamercolorbox}
+
+}
+
+\setbeamertemplate{navigation symbols}{}
