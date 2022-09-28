@@ -66,14 +66,14 @@
 
 \setbeamertemplate{background}{
     \begin{tikzpicture}[remember picture,overlay]
-        \node (aciblogo) [xshift=22pt,yshift=12pt] at (current page.south west)
-        { \includegraphics[height=.5cm]{logos/logo_acib_500.png} };
-        \node (bokulogo) [right=0.3cm of aciblogo]
+        \node[anchor=south west] (aciblogo) [xshift=5pt,yshift=3pt] at (current page.south west)
+        { \includegraphics[height=.6cm]{logos/logo_acib_500.png} };
+        \node (bokulogo) [base right=2pt of aciblogo]
         { \includegraphics[height=.4cm]{logos/BOKU-Logo-Department-DBT-E.pdf} };
-        \node (bokulogo) [right=0.3cm of bokulogo]
+        \node (biotoplogo) [base right=2pt of bokulogo]
         { \includegraphics[height=.4cm]{logos/biotop.png} };
 
-        \draw [ultra thin] (current page.south east)++(0,.7cm) -- +(-.7\paperwidth,0);
+        \draw [ultra thin] (current page.south east)++(0,.7cm) -- +(-.73\paperwidth,0);
     \end{tikzpicture}
 }
 
