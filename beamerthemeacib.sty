@@ -53,6 +53,14 @@
         \insertinstitute
     }
 
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=south west] (aciblogo) [xshift=5pt,yshift=3pt] at (current page.south west)
+        { \includegraphics[height=.6cm]{logos/logo_acib_500.png} };
+        \node (bokulogo) [base right=2pt of aciblogo]
+        { \includegraphics[height=.4cm]{logos/BOKU-Logo-Department-DBT-E.pdf} };
+        \node (biotoplogo) [base right=2pt of bokulogo]
+        { \includegraphics[height=.4cm]{logos/biotop.png} };
+    \end{tikzpicture}
     % \begin{tikzpicture}[remember picture,overlay]
     %     \node (aciblogo) [xshift=-20pt,yshift=-50pt] at (current page.center)
     %     { \includegraphics[width=2cm]{img/logo_acib_500.png} };
@@ -64,18 +72,7 @@
 }
 
 
-\setbeamertemplate{background}{
-    \begin{tikzpicture}[remember picture,overlay]
-        \node[anchor=south west] (aciblogo) [xshift=5pt,yshift=3pt] at (current page.south west)
-        { \includegraphics[height=.6cm]{logos/logo_acib_500.png} };
-        \node (bokulogo) [base right=2pt of aciblogo]
-        { \includegraphics[height=.4cm]{logos/BOKU-Logo-Department-DBT-E.pdf} };
-        \node (biotoplogo) [base right=2pt of bokulogo]
-        { \includegraphics[height=.4cm]{logos/biotop.png} };
-
-        \draw [ultra thin] (current page.south east)++(0,.7cm) -- +(-.73\paperwidth,0);
-    \end{tikzpicture}
-}
+\setbeamertemplate{background}{}
 
 \setbeamertemplate{frametitle}{%
     \begin{beamercolorbox}[ht=.9cm,wd=\paperwidth]{white}
@@ -110,17 +107,30 @@
 }
 
 \setbeamertemplate{footline}{%
+
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=south west] (aciblogo) [xshift=5pt,yshift=3pt] at (current page.south west)
+        { \includegraphics[height=.6cm]{logos/logo_acib_500.png} };
+        \node (bokulogo) [base right=2pt of aciblogo]
+        { \includegraphics[height=.4cm]{logos/BOKU-Logo-Department-DBT-E.pdf} };
+        \node (biotoplogo) [base right=2pt of bokulogo]
+        { \includegraphics[height=.4cm]{logos/biotop.png} };
+
+        \draw [ultra thin] (current page.south east)++(0,.7cm) -- +(-.73\paperwidth,0);
+    \end{tikzpicture}
+
     \begin{beamercolorbox}[sep=0.3cm,ht=.7cm,wd=\paperwidth]{white}
         \hspace{.3\paperwidth}
         \begin{minipage}{.53\paperwidth}
-        \insertauthor \quad --- \quad \insertevent\; \insertdate
+        \insertauthor \quad --- \quad \insertevent
         \end{minipage}
         \begin{minipage}{.1\paperwidth}
             \flushright
             \insertframenumber
         \end{minipage}
     \end{beamercolorbox}
-
 }
 
-\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[circle]
+
+% \setbeamertemplate{navigation symbols}{}

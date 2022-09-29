@@ -2,5 +2,10 @@ all: presentation.tex
 	docker run \
 		--rm \
 		-v $(shell pwd):/project \
-		-v $(shell pwd):/project/logos \
-		mytex latexmk -pdf presentation.tex
+		mytex latexmk -pdf --shell-escape presentation.tex
+
+cont:
+	docker run \
+		--rm \
+		-v $(shell pwd):/project \
+		mytex latexmk -pdf -pvc --shell-escape presentation.tex
