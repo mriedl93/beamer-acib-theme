@@ -3,7 +3,17 @@
 \RequirePackage{tikz}
 \RequirePackage{setspace}
 \RequirePackage{graphicx}
+\RequirePackage[british]{babel}
+\RequirePackage[useregional]{datetime2}
 \usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+
+\definecolor{acibgreen}{rgb}{26,229,26}
+\definecolor{bokugreen}{rgb}{79,183,71}
+\definecolor{biotopblue}{rgb}{0,0,255}
+\definecolor{biotopred}{rgb}{255,0,0}
+\definecolor{biotechteal}{rgb}{74,177,213}
+\definecolor{black}{rgb}{0,0,0}
 
 % \useoutertheme{shadow}
 % \useoutertheme{split}
@@ -17,120 +27,128 @@
 
 
 \setbeamerfont{title}{series=\bfseries}
-\setbeamerfont{title}{size=\large}
+\setbeamerfont{title}{size=\Large}
 \setbeamerfont{frametitle}{size=\Large}
 \setbeamerfont{framesubtitle}{size=\small}
 \setbeamerfont{author}{size=\normalsize}
-\setbeamerfont{date}{size=\small}
+\setbeamerfont{date}{size=\scriptsize}
 \setbeamerfont{institute}{size=\small}
 
 
 \setbeamertemplate{title page}{%
     {%
-        \usebeamerfont{title}
-        \MakeUppercase\inserttitle
-    }
-    \par\medskip
-
-    {%
-        \rule{\linewidth}{1pt}
-    }
-    \par\medskip
-
-    {%
-        \usebeamerfont{author}
-        \insertauthor
-    }
-    \par\smallskip
-
-    {%
         \usebeamerfont{date}
-        \insertdate
+        \insertevent, \insertdate
     }
-    \par
-    {%
-        \usebeamerfont{institute}
-        \insertinstitute
-    }
+    \par\vspace{40pt}
+
+
+    \begin{center}
+        {%
+            \usebeamerfont{author}
+            \insertauthor
+        }
+        \par\vspace{12pt}
+
+        {%
+            \usebeamerfont{title}
+            \inserttitle
+        }
+        \par\medskip
+    \end{center}
+
 
     \begin{tikzpicture}[remember picture,overlay]
-        \node[anchor=south west] (aciblogo) [xshift=5pt,yshift=3pt] at (current page.south west)
-        { \includegraphics[height=.6cm]{logos/logo_acib_500.png} };
+        \node[anchor=north east] (aciblogo) [xshift=-80pt,yshift=-10pt]
+            at (current page.north east)
+        { \includegraphics[height=1.2cm]{logos/logo_acib_500.png} };
         \node (bokulogo) [base right=2pt of aciblogo]
-        { \includegraphics[height=.4cm]{logos/BOKU-Logo-Department-DBT-E.pdf} };
-        \node (biotoplogo) [base right=2pt of bokulogo]
-        { \includegraphics[height=.4cm]{logos/biotop.png} };
+        { \includegraphics[height=1.0cm]{logos/BOKU-Logo-Department-DBT-E.pdf} };
     \end{tikzpicture}
-    % \begin{tikzpicture}[remember picture,overlay]
-    %     \node (aciblogo) [xshift=-20pt,yshift=-50pt] at (current page.center)
-    %     { \includegraphics[width=2cm]{img/logo_acib_500.png} };
-    %     \node (bokulogo) [right=of aciblogo]
-    %     { \includegraphics[width=2cm]{img/BOKU-Logo-Department-DBT-E.pdf} };
-    %     \node (bokulogo) [right=of bokulogo]
-    %     { \includegraphics[width=2cm]{img/biotop.png} };
-    % \end{tikzpicture}
+
+    \begin{tikzpicture}[remember picture,overlay]
+        \coordinate (origin) at ($ (current page.south west) + (0, .6) $);
+        \fill[ fill={rgb,255:red,185; green,205; blue,79} ]
+            (origin) --
+            ++(.5\paperwidth,0) --
+            ++(.1, -.2) --
+            ++(-.1, -.2) --
+            ++(-.5\paperwidth,0);
+        \node[anchor=east,color=white,font=\tiny]
+            at ($ (origin) + (.5\paperwidth, -0.2) $)
+            {INNOVATIONS FROM NATURE};
+        \node[anchor=west,color=green,font=\tiny]
+            at ($ (origin) + (.51\paperwidth, -0.2) $)
+            {AUSTRIAN CENTRE OF INDUSTRIAL BIOTECHNOLOGY};
+    \end{tikzpicture}
 }
 
 
 \setbeamertemplate{background}{}
 
 \setbeamertemplate{frametitle}{%
-    \begin{beamercolorbox}[ht=.9cm,wd=\paperwidth]{white}
-        \hspace{.5cm}
-        \begin{minipage}{.7\paperwidth}
-            \nointerlineskip
-            {%
-                % \usebeamercolor[fg]{frametitle}
-                \setstretch{0.8}
-                \usebeamerfont{frametitle}%
-                \strut\insertframetitle\strut\newline
-            }%
-            \ifx\insertframesubtitle\@empty\else%
-                {%
-                    \setstretch{0}%
-                    \usebeamerfont{framesubtitle}%
-                    \strut\insertframesubtitle\strut\par
-                }%
-            \fi%
-            % \medskip
-            \vskip-10pt%
-            {%
-                \rule{.9\paperwidth}{.3pt}%
-            }%
-        \end{minipage}
-        \begin{minipage}{.2\paperwidth}
-            \flushright
-            {\footnotesize\textit{\insertsectionhead}}\\[-8pt]
-            {\tiny\textit{\insertsubsectionhead}}
-        \end{minipage}
-    \end{beamercolorbox}
+    \vskip8pt
+    {%
+        \usebeamerfont{frametitle}\insertframetitle\vskip3pt
+    }%
+    \ifx\insertframesubtitle\@empty\else%
+        {%
+            \usebeamerfont{framesubtitle}%
+            \insertframesubtitle\vskip4pt
+        }%
+    \fi%
 }
 
 \setbeamertemplate{footline}{%
 
     \begin{tikzpicture}[remember picture,overlay]
-        \node[anchor=south west] (aciblogo) [xshift=5pt,yshift=3pt] at (current page.south west)
-        { \includegraphics[height=.6cm]{logos/logo_acib_500.png} };
-        \node (bokulogo) [base right=2pt of aciblogo]
-        { \includegraphics[height=.4cm]{logos/BOKU-Logo-Department-DBT-E.pdf} };
-        \node (biotoplogo) [base right=2pt of bokulogo]
-        { \includegraphics[height=.4cm]{logos/biotop.png} };
-
-        \draw [ultra thin] (current page.south east)++(0,.7cm) -- +(-.73\paperwidth,0);
+        \newcommand{\dist}{.15}
+        \newcommand{\len}{.77\paperwidth}
+        \coordinate (origin) at ($ (current page.south west) + (0, .6) $);
+        \fill[ fill={rgb,255:red,185; green,205; blue,79} ]
+            (origin) --
+            ++(\len,0) --
+            ++(.1, -\dist) --
+            ++(-.1, -\dist) --
+            ++(-\len,0);
+        \node[anchor=east,color=white,font=\tiny]
+            at ($ (origin) + (\len, -\dist) $)
+            {INNOVATIONS FROM NATURE};
+        \node[anchor=east, font=\scriptsize, color = white]
+            at ($ (origin) + (2, -\dist) $)
+            {\insertframenumber};
+        % \node[anchor=west,color=green,font=\tiny]
+        %     at ($ (origin) + (.51\paperwidth, -\dist) $)
+        %     {AUSTRIAN CENTRE OF INDUSTRIAL BIOTECHNOLOGY};
+        \node[anchor=south east] (bokulogo)
+            at ($ (current page.south east) + (-.35, .25) $)
+            { \includegraphics[height=0.6cm]{logos/BOKU-Logo-Department-DBT-E.pdf} };
+        \node (aciblogo) [base left=2pt of bokulogo]
+            { \includegraphics[height=0.8cm]{logos/logo_acib_500.png} };
     \end{tikzpicture}
-
-    \begin{beamercolorbox}[sep=0.3cm,ht=.7cm,wd=\paperwidth]{white}
-        \hspace{.3\paperwidth}
-        \begin{minipage}{.53\paperwidth}
-        \insertauthor \quad --- \quad \insertevent
-        \end{minipage}
-        \begin{minipage}{.1\paperwidth}
-            \flushright
-            \insertframenumber
-        \end{minipage}
-    \end{beamercolorbox}
+    % \begin{tikzpicture}[remember picture,overlay]
+    %     \node[anchor=south west] (aciblogo) [xshift=5pt,yshift=3pt] at (current page.south west)
+    %     { \includegraphics[height=.6cm]{logos/logo_acib_500.png} };
+    %     \node (bokulogo) [base right=2pt of aciblogo]
+    %     { \includegraphics[height=.4cm]{logos/BOKU-Logo-Department-DBT-E.pdf} };
+    %     \node (biotoplogo) [base right=2pt of bokulogo]
+    %     { \includegraphics[height=.4cm]{logos/biotop.png} };
+    %
+    %     \draw [ultra thin] (current page.south east)++(0,.7cm) -- +(-.73\paperwidth,0);
+    % \end{tikzpicture}
+    %
+    % \begin{beamercolorbox}[sep=0.3cm,ht=.7cm,wd=\paperwidth]{white}
+    %     \hspace{.3\paperwidth}
+    %     \begin{minipage}{.53\paperwidth}
+    %     \insertauthor \quad --- \quad \insertevent
+    %     \end{minipage}
+    %     \begin{minipage}{.1\paperwidth}
+    %         \flushright
+    %         \insertframenumber
+    %     \end{minipage}
+    % \end{beamercolorbox}
 }
 
 \setbeamertemplate{itemize items}[circle]
 
-% \setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{navigation symbols}{}
