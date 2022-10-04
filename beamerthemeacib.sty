@@ -5,6 +5,7 @@
 \RequirePackage{graphicx}
 \RequirePackage[british]{babel}
 \RequirePackage[useregional]{datetime2}
+\RequirePackage{changepage}
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}
 
@@ -66,66 +67,76 @@
         { \includegraphics[height=1.0cm]{logos/BOKU-Logo-Department-DBT-E.pdf} };
     \end{tikzpicture}
 
-    \begin{tikzpicture}[remember picture,overlay]
-        \coordinate (origin) at ($ (current page.south west) + (0, .6) $);
-        \fill[ fill={rgb,255:red,185; green,205; blue,79} ]
-            (origin) --
-            ++(.5\paperwidth,0) --
-            ++(.1, -.2) --
-            ++(-.1, -.2) --
-            ++(-.5\paperwidth,0);
-        \node[anchor=east,color=white,font=\tiny]
-            at ($ (origin) + (.5\paperwidth, -0.2) $)
-            {INNOVATIONS FROM NATURE};
-        \node[anchor=west,color=green,font=\tiny]
-            at ($ (origin) + (.51\paperwidth, -0.2) $)
-            {AUSTRIAN CENTRE OF INDUSTRIAL BIOTECHNOLOGY};
-    \end{tikzpicture}
+    {
+        \usebeamercolor{acibcolor}
+        \begin{tikzpicture}[remember picture,overlay]
+            \coordinate (origin) at ($ (current page.south west) + (0, .6) $);
+            \fill[ fill=fg ]
+                (origin) --
+                ++(.5\paperwidth,0) --
+                ++(.1, -.2) --
+                ++(-.1, -.2) --
+                ++(-.5\paperwidth,0);
+            \node[anchor=east,color=white,font=\tiny]
+                at ($ (origin) + (.5\paperwidth, -0.2) $)
+                {INNOVATIONS FROM NATURE};
+            \node[anchor=west,color=fg,font=\tiny]
+                at ($ (origin) + (.51\paperwidth, -0.2) $)
+                {AUSTRIAN CENTRE OF INDUSTRIAL BIOTECHNOLOGY};
+        \end{tikzpicture}
+    }
 }
 
 
 \setbeamertemplate{background}{}
 
 \setbeamertemplate{frametitle}{%
-    \vskip8pt
-    {%
-        \usebeamerfont{frametitle}\insertframetitle\vskip3pt
-    }%
-    \ifx\insertframesubtitle\@empty\else%
+    \begin{adjustwidth}{-1em}{0em}
         {%
-            \usebeamerfont{framesubtitle}%
-            \insertframesubtitle\vskip4pt
+            \usebeamerfont{frametitle}\insertframetitle\vskip3pt
         }%
-    \fi%
+        \ifx\insertframesubtitle\@empty\else%
+            {%
+                \usebeamerfont{framesubtitle}%
+                \insertframesubtitle\vskip4pt
+            }%
+        \fi%
+    \end{adjustwidth}
 }
 
 \setbeamertemplate{footline}{%
 
-    \begin{tikzpicture}[remember picture,overlay]
-        \newcommand{\dist}{.15}
-        \newcommand{\len}{.77\paperwidth}
-        \coordinate (origin) at ($ (current page.south west) + (0, .6) $);
-        \fill[ fill={rgb,255:red,185; green,205; blue,79} ]
-            (origin) --
-            ++(\len,0) --
-            ++(.1, -\dist) --
-            ++(-.1, -\dist) --
-            ++(-\len,0);
-        \node[anchor=east,color=white,font=\tiny]
-            at ($ (origin) + (\len, -\dist) $)
-            {INNOVATIONS FROM NATURE};
-        \node[anchor=east, font=\scriptsize, color = white]
-            at ($ (origin) + (2, -\dist) $)
-            {\insertframenumber};
-        % \node[anchor=west,color=green,font=\tiny]
-        %     at ($ (origin) + (.51\paperwidth, -\dist) $)
-        %     {AUSTRIAN CENTRE OF INDUSTRIAL BIOTECHNOLOGY};
-        \node[anchor=south east] (bokulogo)
-            at ($ (current page.south east) + (-.35, .25) $)
-            { \includegraphics[height=0.6cm]{logos/BOKU-Logo-Department-DBT-E.pdf} };
-        \node (aciblogo) [base left=2pt of bokulogo]
-            { \includegraphics[height=0.8cm]{logos/logo_acib_500.png} };
-    \end{tikzpicture}
+    \begin{beamercolorbox}[ht=20pt, wd = \paperwidth]{white}
+    \end{beamercolorbox}
+
+    {
+        \usebeamercolor{acibcolor}
+        \begin{tikzpicture}[remember picture,overlay]
+            \newcommand{\dist}{.15}
+            \newcommand{\len}{.77\paperwidth}
+            \coordinate (origin) at ($ (current page.south west) + (0, .6) $);
+            \fill[ fill=fg ]
+                (origin) --
+                ++(\len,0) --
+                ++(.1, -\dist) --
+                ++(-.1, -\dist) --
+                ++(-\len,0);
+            \node[anchor=east,color=white,font=\tiny]
+                at ($ (origin) + (\len, -\dist) $)
+                {INNOVATIONS FROM NATURE};
+            \node[anchor=east, font=\scriptsize, color = white]
+                at ($ (origin) + (2, -\dist) $)
+                {\insertframenumber};
+            % \node[anchor=west,color=green,font=\tiny]
+            %     at ($ (origin) + (.51\paperwidth, -\dist) $)
+            %     {AUSTRIAN CENTRE OF INDUSTRIAL BIOTECHNOLOGY};
+            \node[anchor=south east] (bokulogo)
+                at ($ (current page.south east) + (-.35, .25) $)
+                { \includegraphics[height=0.6cm]{logos/BOKU-Logo-Department-DBT-E.pdf} };
+            \node (aciblogo) [base left=2pt of bokulogo]
+                { \includegraphics[height=0.8cm]{logos/logo_acib_500.png} };
+        \end{tikzpicture}
+    }
     % \begin{tikzpicture}[remember picture,overlay]
     %     \node[anchor=south west] (aciblogo) [xshift=5pt,yshift=3pt] at (current page.south west)
     %     { \includegraphics[height=.6cm]{logos/logo_acib_500.png} };
