@@ -1,0 +1,116 @@
+% vim: set shiftwidth=2:
+
+
+\ProvidesPackage{beamerthemeacibposter}
+
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
+\RequirePackage{setspace}
+
+\usetikzlibrary{calc}
+
+
+\definecolor{acibgreen}{rgb}{26,229,26}
+\definecolor{bokugreen}{rgb}{79,183,71}
+\definecolor{biotopblue}{rgb}{0,0,255}
+\definecolor{biotopred}{rgb}{255,0,0}
+\definecolor{biotechteal}{rgb}{74,177,213}
+\definecolor{black}{rgb}{0,0,0}
+
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{title}{size=\Huge}
+\setbeamerfont{frametitle}{size=\Large}
+\setbeamerfont{framesubtitle}{size=\small}
+\setbeamerfont{author}{size=\Large}
+\setbeamerfont{date}{size=\scriptsize}
+\setbeamerfont{institute}{size=\normalsize}
+
+\def\beamer@andinst{\\[.5em]}
+
+\newenvironment<>{introblock}[1]{%
+  \begin{actionenv}#2%
+    \def\insertblocktitle{#1}%
+    \par%
+    \mode<presentation>{%
+      \setbeamercolor{block title}{fg=white,bg=acibpurple}
+      \setbeamercolor{block body}{fg=black,bg=acibpurple!15}
+      \setbeamercolor{itemize item}{fg=orange!20!black}
+      \setbeamertemplate{itemize item}[triangle]
+    }%
+  \usebeamertemplate{block begin}}
+{\par\usebeamertemplate{block end}\end{actionenv}}
+
+
+\setbeamertemplate{headline}{
+
+  \begin{beamercolorbox}[wd=\paperwidth]{acibcolorheadline}
+    \vskip120pt
+    \begin{columns}[T]
+      \begin{column}{.05\textwidth}\end{column}
+      \begin{column}{.95\textwidth}
+        \usebeamerfont{title}\inserttitle
+      \end{column}
+    \end{columns}
+    \vskip80pt
+    \begin{columns}
+      \begin{column}{.05\textwidth} % LEFT
+      \end{column}
+      \begin{column}{.95\textwidth} % RIGHT
+        \usebeamerfont{author}\insertauthor
+      \end{column}
+    \end{columns}
+    \vskip60pt
+    \begin{columns}
+      \begin{column}{.05\textwidth} % LEFT
+      \end{column}
+      \begin{column}{.95\textwidth} % RIGHT
+        {\setstretch{1.0}%
+        \usebeamerfont{institute}\insertinstitute}
+      \end{column}
+    \end{columns}
+  \vskip80pt
+  \end{beamercolorbox}
+  \vskip40pt
+}
+
+\setbeamercolor{test}{fg=white,bg=green}
+
+\setbeamertemplate{footline}{
+  \begin{beamercolorbox}[wd=\paperwidth, ht=250pt]{white}
+  \end{beamercolorbox}
+  {
+    \usebeamercolor{acibcolor}
+    \begin{tikzpicture}[remember picture,overlay]
+
+      \newcommand{\dist}{1}
+      \newcommand{\len}{.75\paperwidth}
+
+      \coordinate (origin) at ($ (current page.south west) + (0, 3) $);
+      \fill[ fill=fg ]
+        (origin) --
+        ++(\len,0) --
+        ++(.7, \dist) --
+        ++(-.7, \dist) --
+        ++(-\len,0);
+      \node[anchor=east,color=white,font=\Large]
+        at ($ (origin) + (\len, \dist) - (1, 0) $)
+        {INNOVATIONS FROM NATURE};
+
+      % \node[anchor=west,color=green,font=\tiny]
+      %     at ($ (origin) + (.51\paperwidth, -\dist) $)
+      %     {AUSTRIAN CENTRE OF INDUSTRIAL BIOTECHNOLOGY};
+      % \node[anchor=south east] (bokulogo)
+      % at ($ (current page.south east) + (-.35, .25) $)
+      % { \includegraphics[height=0.6cm]{logos/imics.jpg} };
+      %
+      % \node (aciblogo) [base left=2pt of bokulogo]
+      % { \includegraphics[height=0.8cm]{logos/logo_acib_500.png} };
+      % \node[anchor=north east] (section)
+      %     at ($(current page.north east) + (-2pt, -1pt)$)
+      %     {\itshape \insertsection\ --- \insertsubsection };
+
+    \end{tikzpicture}
+  }
+}
+
+\setbeamertemplate{navigation symbols}{}
