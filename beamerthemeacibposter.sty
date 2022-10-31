@@ -18,14 +18,16 @@
 \definecolor{black}{rgb}{0,0,0}
 
 \setbeamerfont{title}{series=\bfseries}
-\setbeamerfont{title}{size=\Huge}
+\setbeamerfont{title}{size=\huge}
 \setbeamerfont{frametitle}{size=\Large}
 \setbeamerfont{framesubtitle}{size=\small}
-\setbeamerfont{author}{size=\Large}
+\setbeamerfont{author}{size=\large}
 \setbeamerfont{date}{size=\scriptsize}
 \setbeamerfont{institute}{size=\normalsize}
 
 \def\beamer@andinst{\\[.5em]}
+
+\setbeamertemplate{itemize item}[circle]
 
 \newenvironment<>{introblock}[1]{%
   \begin{actionenv}#2%
@@ -35,7 +37,7 @@
       \setbeamercolor{block title}{fg=white,bg=acibpurple}
       \setbeamercolor{block body}{fg=black,bg=acibpurple!15}
       \setbeamercolor{itemize item}{fg=orange!20!black}
-      \setbeamertemplate{itemize item}[triangle]
+      \setbeamertemplate{itemize item}[circle]
     }%
   \usebeamertemplate{block begin}}
 {\par\usebeamertemplate{block end}\end{actionenv}}
@@ -44,14 +46,14 @@
 \setbeamertemplate{headline}{
 
   \begin{beamercolorbox}[wd=\paperwidth]{acibcolorheadline}
-    \vskip120pt
+    \vskip80pt
     \begin{columns}[T]
       \begin{column}{.05\textwidth}\end{column}
       \begin{column}{.95\textwidth}
         \usebeamerfont{title}\inserttitle
       \end{column}
     \end{columns}
-    \vskip80pt
+    \vskip40pt
     \begin{columns}
       \begin{column}{.05\textwidth} % LEFT
       \end{column}
@@ -59,7 +61,7 @@
         \usebeamerfont{author}\insertauthor
       \end{column}
     \end{columns}
-    \vskip60pt
+    \vskip50pt
     \begin{columns}
       \begin{column}{.05\textwidth} % LEFT
       \end{column}
@@ -68,9 +70,9 @@
         \usebeamerfont{institute}\insertinstitute}
       \end{column}
     \end{columns}
-  \vskip80pt
+  \vskip50pt
   \end{beamercolorbox}
-  \vskip40pt
+  \vskip25pt
 }
 
 \setbeamercolor{test}{fg=white,bg=green}
