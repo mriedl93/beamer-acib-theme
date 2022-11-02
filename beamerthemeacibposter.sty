@@ -6,6 +6,7 @@
 \RequirePackage{tikz}
 \RequirePackage{graphicx}
 \RequirePackage{setspace}
+\RequirePackage{changepage}
 
 \usetikzlibrary{calc}
 
@@ -26,8 +27,24 @@
 \setbeamerfont{institute}{size=\normalsize}
 
 \def\beamer@andinst{\\[.5em]}
+\def\beamer@andtitle{\hspace{.2em}\textbullet\ \hspace{.2em}}
 
 \setbeamertemplate{itemize item}[circle]
+
+\addtobeamertemplate{block begin}
+  {}
+  {%
+    \vspace{.8ex}
+    \begin{adjustwidth}{.5em}{.5em}
+  }
+
+\addtobeamertemplate{block end}
+  {%
+    \end{adjustwidth}
+    \vspace{1ex}
+  }
+  {\vspace
+  {2ex}}
 
 \newenvironment<>{introblock}[1]{%
   \begin{actionenv}#2%
@@ -71,8 +88,8 @@
       \end{column}
     \end{columns}
   \vskip50pt
-  \end{beamercolorbox}
-  \vskip25pt
+  \end{beamercolorbox}%
+  \vskip25pt%
 }
 
 \setbeamercolor{test}{fg=white,bg=green}
