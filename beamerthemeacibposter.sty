@@ -19,12 +19,13 @@
 \definecolor{black}{rgb}{0,0,0}
 
 \setbeamerfont{title}{series=\bfseries}
-\setbeamerfont{title}{size=\huge}
+\setbeamerfont{title}{size=\Huge}
 \setbeamerfont{frametitle}{size=\Large}
 \setbeamerfont{framesubtitle}{size=\small}
-\setbeamerfont{author}{size=\large}
+\setbeamerfont{author}{size=\Large}
 \setbeamerfont{date}{size=\scriptsize}
 \setbeamerfont{institute}{size=\normalsize}
+\setbeamerfont{block title}{size = \Large}
 
 \def\beamer@andinst{\\[.5em]}
 \def\beamer@andtitle{\hspace{.2em}\textbullet\ \hspace{.2em}}
@@ -51,9 +52,9 @@
     \def\insertblocktitle{#1}%
     \par%
     \mode<presentation>{%
-      \setbeamercolor{block title}{fg=white,bg=acibpurple}
-      \setbeamercolor{block body}{fg=black,bg=acibpurple!15}
-      \setbeamercolor{itemize item}{fg=orange!20!black}
+      \setbeamercolor{block title}{fg = white,bg = acibpurple}
+      \setbeamercolor{block body}{fg = black,bg = acibpurple!15}
+      \setbeamercolor{itemize item}{fg = orange!20!black}
       \setbeamertemplate{itemize item}[circle]
     }%
   \usebeamertemplate{block begin}}
@@ -64,30 +65,30 @@
 
   \begin{beamercolorbox}[wd=\paperwidth]{acibcolorheadline}
     \vskip80pt
-    \begin{columns}[T]
-      \begin{column}{.05\textwidth}\end{column}
-      \begin{column}{.95\textwidth}
-        \usebeamerfont{title}\inserttitle
-      \end{column}
-    \end{columns}
-    \vskip40pt
-    \begin{columns}
-      \begin{column}{.05\textwidth} % LEFT
-      \end{column}
-      \begin{column}{.95\textwidth} % RIGHT
-        \usebeamerfont{author}\insertauthor
-      \end{column}
-    \end{columns}
+    % \begin{column}{.05\textwidth}\end{column}
+    % \begin{column}{.95\textwidth}
+    \begin{center}
+      {\usebeamerfont{title}\inserttitle}
+      % \end{column}
+      \vskip40pt
+      % \begin{columns}
+      %   \begin{column}{.05\textwidth} % LEFT
+      %   \end{column}
+      %   \begin{column}{.95\textwidth} % RIGHT
+      {\usebeamerfont{author}\insertauthor}
+      %   \end{column}
+      % \end{columns}
+      \vskip50pt
+      % \begin{columns}
+      %   \begin{column}{.05\textwidth} % LEFT
+      %   \end{column}
+      %   \begin{column}{.95\textwidth} % RIGHT
+      {\setstretch{1.0}%
+      \usebeamerfont{institute}\insertinstitute}
+      %   \end{column}
+      % \end{columns}
+    \end{center}
     \vskip50pt
-    \begin{columns}
-      \begin{column}{.05\textwidth} % LEFT
-      \end{column}
-      \begin{column}{.95\textwidth} % RIGHT
-        {\setstretch{1.0}%
-        \usebeamerfont{institute}\insertinstitute}
-      \end{column}
-    \end{columns}
-  \vskip50pt
   \end{beamercolorbox}%
   \vskip25pt%
 }
