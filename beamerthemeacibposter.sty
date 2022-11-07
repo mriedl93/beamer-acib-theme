@@ -7,6 +7,7 @@
 \RequirePackage{graphicx}
 \RequirePackage{setspace}
 \RequirePackage{changepage}
+\RequirePackage{tcolorbox}
 
 \usetikzlibrary{calc}
 
@@ -17,6 +18,7 @@
 \definecolor{biotopred}{rgb}{255,0,0}
 \definecolor{biotechteal}{rgb}{74,177,213}
 \definecolor{black}{rgb}{0,0,0}
+\definecolor{authorcolor}{RGB}{26,163,171}
 
 \setbeamerfont{title}{series=\bfseries}
 \setbeamerfont{title}{size=\Huge}
@@ -25,7 +27,7 @@
 \setbeamerfont{author}{size=\Large}
 \setbeamerfont{date}{size=\scriptsize}
 \setbeamerfont{institute}{size=\normalsize}
-\setbeamerfont{block title}{size = \Large}
+\setbeamerfont{block title}{size = \Large\bfseries}
 
 \def\beamer@andinst{\\[.5em]}
 \def\beamer@andtitle{\hspace{.2em}\textbullet\ \hspace{.2em}}
@@ -44,8 +46,10 @@
     \end{adjustwidth}
     \vspace{1ex}
   }
-  {\vspace
-  {2ex}}
+  {\vspace{2ex}}
+
+\setbeamercolor{block body}{bg=white}
+\setbeamercolor{block title}{fg=white, bg=acibgreen}
 
 \newenvironment<>{introblock}[1]{%
   \begin{actionenv}#2%
@@ -53,7 +57,20 @@
     \par%
     \mode<presentation>{%
       \setbeamercolor{block title}{fg = white,bg = acibpurple}
-      \setbeamercolor{block body}{fg = black,bg = acibpurple!15}
+      \setbeamercolor{block body}{fg = black,bg = acibpurple!10}
+      \setbeamercolor{itemize item}{fg = orange!20!black}
+      \setbeamertemplate{itemize item}[circle]
+    }%
+  \usebeamertemplate{block begin}}
+{\par\usebeamertemplate{block end}\end{actionenv}}
+
+\newenvironment<>{conclusionblock}[1]{%
+  \begin{actionenv}#2%
+    \def\insertblocktitle{#1}%
+    \par%
+    \mode<presentation>{%
+      \setbeamercolor{block title}{fg = white,bg = acibpurple}
+      \setbeamercolor{block body}{fg = black,bg = acibgreen!25}
       \setbeamercolor{itemize item}{fg = orange!20!black}
       \setbeamertemplate{itemize item}[circle]
     }%
