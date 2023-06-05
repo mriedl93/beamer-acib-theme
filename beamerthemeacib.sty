@@ -9,12 +9,12 @@
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}
 
-\definecolor{acibgreen}{rgb}{26,229,26}
-\definecolor{bokugreen}{rgb}{79,183,71}
-\definecolor{biotopblue}{rgb}{0,0,255}
-\definecolor{biotopred}{rgb}{255,0,0}
-\definecolor{biotechteal}{rgb}{74,177,213}
-\definecolor{black}{rgb}{0,0,0}
+% \definecolor{acibgreen}{rgb}{26,229,26}
+% \definecolor{bokugreen}{rgb}{79,183,71}
+% \definecolor{biotopblue}{rgb}{0,0,255}
+% \definecolor{biotopred}{rgb}{255,0,0}
+% \definecolor{biotechteal}{rgb}{74,177,213}
+% \definecolor{black}{rgb}{0,0,0}
 
 % \useoutertheme{shadow}
 % \useoutertheme{split}
@@ -34,14 +34,17 @@
 \setbeamerfont{author}{size=\normalsize}
 \setbeamerfont{date}{size=\scriptsize}
 \setbeamerfont{institute}{size=\small}
+\setbeamerfont{block title}{series=\bfseries}
+\setbeamerfont{alerted text}{series=\bfseries}
 
 
 \setbeamertemplate{title page}{%
+    \vspace*{29pt}
     {%
         \usebeamerfont{date}
         \insertevent, \insertdate
     }
-    \par\vspace{40pt}
+    \par\vspace{11pt}
 
 
     \begin{center}
@@ -54,6 +57,11 @@
         {%
             \usebeamerfont{title}
             \inserttitle
+        }
+        \par\vspace{16pt}
+        {%
+            \usebeamerfont{institute}
+            \insertinstitute
         }
         \par\medskip
     \end{center}
@@ -93,15 +101,24 @@
 \setbeamertemplate{frametitle}{%
     \begin{adjustwidth}{-1em}{0em}
         {%
+            \usebeamerfont{framesubtitle}%
+            \secname\vskip1pt
+        }%
+        % \ifx\insertframesubtitle\@empty\else%
+        %     {%
+        %         \usebeamerfont{framesubtitle}%
+        %         \insertframesubtitle\vskip4pt
+        %     }%
+        % \fi%
+        {%
             \usebeamerfont{frametitle}\insertframetitle\vskip3pt
         }%
-        \ifx\insertframesubtitle\@empty\else%
-            {%
-                \usebeamerfont{framesubtitle}%
-                \insertframesubtitle\vskip4pt
-            }%
-        \fi%
     \end{adjustwidth}
+    % \begin{tikzpicture}[remember picture, overlay]
+    %     \node[anchor = north east, xshift = -10pt, yshift = -5pt]
+    %     at (current page.north east)
+    %     {\usebeamerfont{framesubtitle}\itshape \secname};
+    % \end{tikzpicture}
 }
 
 \setbeamertemplate{footline}{%
@@ -124,7 +141,7 @@
             \node[anchor=east,color=white,font=\tiny]
                 at ($ (origin) + (\len, -\dist) $)
                 {INNOVATIONS FROM NATURE};
-            \node[anchor=east, font=\scriptsize, color = white]
+            \node[anchor=east, font=\scriptsize, color = black]
                 at ($ (origin) + (2, -\dist) $)
                 {\insertframenumber};
             % \node[anchor=west,color=green,font=\tiny]
@@ -165,12 +182,5 @@
 
 \setbeamertemplate{itemize item}[square]
 \setbeamertemplate{itemize subitem}[circle]
-\setbeamercolor{itemize item}{fg=acibgreen}
-\setbeamercolor{itemize subitem}{fg=acibgreen}
 \setbeamertemplate{section in toc}[square]
-\setbeamercolor{section number projected}{bg = acibgreen, fg = white}
-
-\setbeamercolor{block body}{bg=acibgreen!10}
-\setbeamercolor{block title}{fg=white, bg=acibgreen}
-
 \setbeamertemplate{navigation symbols}{}

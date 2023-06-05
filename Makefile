@@ -1,20 +1,38 @@
-include local.make
+ifeq ($(shell hostname),lenovarch)
+	texenv =
+else ifeq ($(shell hostname),yawin)
+	texenv = docker exec -it presentation
+else
+	texenv =
+endif
 
-figures = transcriptome_pipeline/pipeline.pdf
+all: presentation.tex
+	$(texenv) \
+		lualatex \
+			-shell-escape \
+			--jobname=build/draft \
+			presentation.tex
 
-all: presentation.tex syncfig
-	docker run \
-		--rm \
-		-v $(shell pwd):/project \
-		mytex latexmk -pdf --shell-escape presentation.tex
 
 cont:
-	docker run \
-		--rm \
-		-v $(shell pwd):/project \
-		mytex latexmk -pdf -pvc --shell-escape presentation.tex
+	$(texenv) \
+		latexmk -lualatex -pvc \
+			--shell-escape \
+			--jobname=build/draft \
+			presentation.tex \
 
-syncfig: figures/tikz/$(figures)
 
-figures/tikz/%.pdf: ~/Nextcloud/PhD/figures/%.pdf
-	mkdir -p $(shell dirname $@) && cp $^ $@
+full:
+	$(texenv) \
+		latexmk -lualatex \
+			-shell-escape \
+			--jobname=build/presentation \
+			presentation.tex \
+		&& cp build/presentation.pdf presentation.pdf
+
+
+run_container:
+	docker run --name presentation -t -d --rm \
+		-v "${PWD}":/usr/src/app \
+		-w /usr/src/app \
+		latex bash
