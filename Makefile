@@ -1,7 +1,9 @@
+CONTAINER_NAME = presentation
+
 ifeq ($(shell hostname),lenovarch)
 	texenv =
 else ifeq ($(shell hostname),yawin)
-	texenv = docker exec -it presentation
+	texenv = docker exec -it $(CONTAINER_NAME)
 else
 	texenv =
 endif
@@ -32,7 +34,7 @@ full:
 
 
 run_container:
-	docker run --name presentation -t -d --rm \
+	docker run --name $(CONTAINER_NAME) -t -d --rm \
 		-v "${PWD}":/usr/src/app \
 		-w /usr/src/app \
 		latex bash
