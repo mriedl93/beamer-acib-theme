@@ -36,6 +36,8 @@
 \setbeamerfont{date}{size=\scriptsize}
 \setbeamerfont{institute}{size=\small}
 
+\setbeamerfont{alerted text}{series=\bfseries}
+
 
 \setbeamertemplate{title page}{%
 
@@ -80,7 +82,7 @@
         {
             \usebeamercolor{biotopcolor}
             \draw[color=white, fill=biotopgrey] (current page.south west) --
-                ++(0, 1.4) -- ++(5, -1.4) -- cycle;
+                ++(0, 1.45) -- ++(4.2, -1.45) -- cycle;
             \node[anchor=south west] (biotoplogo)
                 at ($(current page.south west) + (0, 0)$)
                 { \includegraphics[height=0.8cm]{logos/biotop_dim_colors.png} };
@@ -115,7 +117,7 @@
         \usebeamercolor{biotopcolor}
         \begin{tikzpicture}[remember picture,overlay]
             \draw[color=white, fill=biotopgrey] (current page.south west) --
-                ++(0, 1.4) -- ++(5, -1.4) -- cycle;
+                ++(0, 1.4) -- ++(4, -1.4) -- cycle;
             \node[anchor=south west] (biotoplogo)
                 at ($(current page.south west) + (0, 0)$)
                 { \includegraphics[height=0.8cm]{logos/biotop_dim_colors.png} };
