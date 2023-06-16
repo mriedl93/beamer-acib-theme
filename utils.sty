@@ -1,0 +1,59 @@
+\ProvidesPackage{utils}
+
+% \usepackage[T1]{fontenc}
+\RequirePackage{datetime}
+\RequirePackage{amsmath}
+\RequirePackage{booktabs}
+\RequirePackage{siunitx}
+\RequirePackage{outlines}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{multicol}
+\RequirePackage{fontawesome}
+\RequirePackage{xcolor}
+\RequirePackage{ulem}
+\RequirePackage{varwidth}
+
+
+% Figure placement
+\newcommand{\fig}[4]{
+  \tikz[remember picture, overlay,
+    shift = (current page.south west),
+    x = (current page.south east),
+    y = (current page.north west)
+  ]{%
+    \node[anchor = center] at (#1, #2) {\includegraphics[scale=#4]{#3}};
+  }
+}
+
+% Colored Kastl
+\newcommand{\kastl}[1]{
+  \tikz[baseline]
+  {
+    \filldraw[color=#1!50] (0,0) rectangle +(.3,.3);
+    \draw[color=#1] (0,0) rectangle +(.3,.3);
+  }
+}
+
+% Help grid
+\newcommand{\gada}{%
+  \tikz[remember picture,overlay,
+    shift = (current page.south west),
+    x = (current page.south east),
+    y = (current page.north west),
+    every node/.style = {node font = \tiny, anchor=south west},
+    help lines/.style = {very thin, color=gray!50}
+  ]{%color=gray!50
+    \foreach \x in {0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9} {
+      \draw[help lines] (\x, 0) node {\x} -- (\x, 1);
+    }
+    \foreach \y in {0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9} {
+      \draw[help lines] (0, \y) node {\y} -- (1, \y);
+    }
+  }
+}
+
+% Lua
+\newcommand{\luain}[1]{\directlua{tex.print(#1)}}
+
+\endinput
