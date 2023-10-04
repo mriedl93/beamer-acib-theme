@@ -2,6 +2,7 @@
 
 \RequirePackage{tikz}
 \RequirePackage{setspace}
+\RequirePackage{fontspec}
 \RequirePackage{graphicx}
 \RequirePackage[british]{babel}
 \RequirePackage[useregional]{datetime2}
@@ -20,6 +21,13 @@
 % \useoutertheme{split}
 
 
+\setsansfont[%
+    ItalicFont={Fira Sans Light Italic},%
+    BoldFont={Fira Sans SemiBold},%
+    BoldItalicFont={Fira Sans Italic}%
+]{Fira Sans Light}
+
+
 \makeatletter
 % \newcommand{\event}[1]{#1}
 \def\event#1{\gdef\@event{#1}}
@@ -30,6 +38,7 @@
 \setbeamerfont{title}{series=\bfseries}
 \setbeamerfont{title}{size=\Large}
 \setbeamerfont{frametitle}{size=\Large}
+\setbeamerfont{frametitle}{series=\bfseries}
 \setbeamerfont{framesubtitle}{size=\small}
 \setbeamerfont{author}{size=\normalsize}
 \setbeamerfont{date}{size=\scriptsize}
@@ -39,12 +48,12 @@
 
 
 \setbeamertemplate{title page}{%
-    \vspace*{29pt}
+    \vspace*{1.2cm}%
     {%
-        \usebeamerfont{date}
-        \insertevent, \insertdate
-    }
-    \par\vspace{11pt}
+        \usebeamerfont{date}%
+        \insertevent, \insertdate%
+    }%
+    \vspace{1.2cm}%
 
 
     \begin{center}
