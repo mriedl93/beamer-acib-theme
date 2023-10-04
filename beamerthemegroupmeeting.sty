@@ -1,4 +1,4 @@
-\ProvidesPackage{beamerthemebiotop}
+\ProvidesPackage{beamerthemegroupmeeting}
 
 \RequirePackage{tikz}
 \RequirePackage{setspace}
@@ -20,13 +20,8 @@
 % \useoutertheme{shadow}
 % \useoutertheme{split}
 
-
-% TODO: Fix this. @ in package is different
-\makeatletter
-% \newcommand{\event}[1]{#1}
-\def\event#1{\gdef\@event{#1}}
-\newcommand{\insertevent}{\@event}
-\makeatother
+\definecolor{black}{RGB}{62,61,64}
+\setbeamercolor{structure}{fg=black}
 
 
 \setbeamerfont{title}{series=\bfseries}
@@ -42,13 +37,14 @@
 
 \setbeamertemplate{title page}{%
 
-    \begin{tikzpicture}
-    [remember picture, overlay]
-    {
-        \node [anchor=base west] at ($(current page.north west) + (1, -1.5) $)
-        {\usebeamerfont{date} \insertevent, \insertdate};
-    }
-    \end{tikzpicture}
+    % \begin{tikzpicture}
+    % [remember picture, overlay]
+    % {
+    %     \node [anchor=base west] at ($(current page.north west) + (1, -1.5) $)
+    %     {\usebeamerfont{date} \insertdate};
+    % }
+    % \end{tikzpicture}
+    %
 
     \vspace*{40pt}
 
@@ -71,25 +67,6 @@
         }
         \par\medskip
     \end{center}
-
-
-    \begin{tikzpicture}[remember picture,overlay]
-        \node[anchor=north east] (aciblogo) [xshift=-105pt,yshift=-10pt]
-            at (current page.north east)
-        { \includegraphics[height=1.2cm]{logos/logo_acib_500.png} };
-        \node (bokulogo) [base right=2pt of aciblogo]
-        { \includegraphics[height=1.0cm]{logos/imics.jpg} };
-
-        {
-            \usebeamercolor{biotopcolor}
-            \draw[color=white, fill=biotopgrey] (current page.south west) --
-                ++(0, 1.45) -- ++(4.2, -1.45) -- cycle;
-            \node[anchor=south west] (biotoplogo)
-                at ($(current page.south west) + (0, 0)$)
-                { \includegraphics[height=0.8cm]{logos/biotop_dim_colors.png} };
-        }
-
-    \end{tikzpicture}
 }
 
 
@@ -97,6 +74,7 @@
 
 \setbeamertemplate{frametitle}{%
     \begin{adjustwidth}{-1em}{0em}
+        \vskip6pt
         {%
             \usebeamerfont{frametitle}\insertframetitle\vskip3pt
         }%
@@ -111,28 +89,23 @@
 
 \setbeamertemplate{footline}{%
 
-    \begin{beamercolorbox}[ht=20pt, wd = \paperwidth]{white}
+    % \setbeamercolor{coloredboxstuff}{fg = yellow, bg = blue}
+    \begin{beamercolorbox}[ht=25pt, wd = \paperwidth]{white}
     \end{beamercolorbox}
 
     {
-        \usebeamercolor{biotopcolor}
         \begin{tikzpicture}[remember picture,overlay]
-            \draw[color=white, fill=biotopgrey] (current page.south west) --
-                ++(0, 1.4) -- ++(4, -1.4) -- cycle;
-            \node[anchor=south west] (biotoplogo)
-                at ($(current page.south west) + (0, 0)$)
-                { \includegraphics[height=0.8cm]{logos/biotop_dim_colors.png} };
-            \node[anchor = south east] (imicslogo)
+            \node[anchor = south west] (imicslogo)
+                at ($(current page.south west) + (0.15, 0.08)$)
+                {\includegraphics[height = 1cm]{logos/imics.jpg}};
+            \node[anchor = south east] (dbtlogo)
                 at ($(current page.south east) + (-0.15, 0.08)$)
-                {\includegraphics[height = .5cm]{logos/imics.jpg}};
-            \node[anchor = south east] (aciblogo)
-                [left=.1 of imicslogo]
-                {\includegraphics[height=.5cm]{logos/logo_acib_500.png}};
-            \node[anchor = south east] (fwflogo)
-                [below left = -0.65 and -0.05 of aciblogo]
-                {\includegraphics[height=.7cm]{logos/FWF_Logo_Zusatz_Dunkelblau_RGB_DE}};
+                {\includegraphics[height = 1cm]{logos/BOKU-Logo-Department-DBT-E.pdf}};
+            \node[anchor=west] (footer)
+                [below right= .1 and .2cm of imicslogo.east]
+                {\scriptsize \inserttitle\ -- \insertdate};
             \node[anchor=south] (slidenumber)
-                at ($(current page.south) + (0, .08)$)
+                [below left= .1cm and .2cm of dbtlogo.west]
                 {\scriptsize \insertframenumber};
         \end{tikzpicture}
     }
