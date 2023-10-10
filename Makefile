@@ -37,4 +37,4 @@ run_container:
 	docker run --name $(CONTAINER_NAME) -t -d --rm \
 		-v "${PWD}":/usr/src/app \
 		-w /usr/src/app \
-		latex bash
+		linux-test bash
