@@ -19,11 +19,32 @@
 % Figure placement
 \newcommand{\fig}[4]{
   \tikz[remember picture, overlay,
-    shift = (current page.south west),
-    x = (current page.south east),
-    y = (current page.north west)
+    shift = (current page.south west)
+    % x = (current page.south east),
+    % y = (current page.north west)
   ]{%
     \node[anchor = center] at (#1, #2) {\includegraphics[scale=#4]{#3}};
+  }
+}
+
+% Absolute text placement
+\newcommand{\txt}[4]{
+  \tikz[remember picture, overlay,
+    shift = (current page.south west)
+    % x = (current page.south east),
+    % y = (current page.north west)
+  ] {%
+    \node[#3] at (#1, #2) {#4};
+  }
+}
+
+\newcommand{\abstikz}[1]{
+  \tikz[remember picture, overlay,
+    shift = (current page.south west)
+    % x = (current page.south east),
+    % y = (current page.north west)
+  ] {%
+    #1
   }
 }
 
@@ -49,6 +70,22 @@
       \draw[help lines] (\x, 0) node {\x} -- (\x, 1);
     }
     \foreach \y in {0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9} {
+      \draw[help lines] (0, \y) node {\y} -- (1, \y);
+    }
+  }
+}
+
+% Help grid cm
+\newcommand{\gadacm}{%
+  \tikz[remember picture,overlay,
+  shift = (current page.south west),
+  every node/.style = {node font = \tiny, anchor=south west},
+  help lines/.style = {very thin, color=gray!50}
+  ]{%color=gray!50
+    \foreach \x in {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16} {
+      \draw[help lines] (\x, 0) node {\x} -- (\x, 1);
+    }
+    \foreach \y in {1, 2, 3, 4, 5, 6, 7, 8, 9} {
       \draw[help lines] (0, \y) node {\y} -- (1, \y);
     }
   }
