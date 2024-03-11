@@ -3,10 +3,12 @@ CONTAINER_NAME = presentation
 ifeq ($(shell hostname),lenovarch)
 	texenv =
 else ifeq ($(shell hostname),yawin)
-	texenv = docker exec -it $(CONTAINER_NAME)
+	# texenv = docker exec -it $(CONTAINER_NAME)
+	texenv = distrobox enter latex_distrobox --
 else
 	texenv =
 endif
+
 
 all: presentation.tex
 	$(texenv) \
