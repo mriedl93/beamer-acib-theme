@@ -2,6 +2,7 @@
 
 \RequirePackage{tikz}
 \RequirePackage{setspace}
+\RequirePackage{fontspec}
 \RequirePackage{graphicx}
 \RequirePackage[british]{babel}
 \RequirePackage[useregional]{datetime2}
@@ -19,6 +20,40 @@
 %
 % \useoutertheme{shadow}
 % \useoutertheme{split}
+
+
+\setsansfont[%
+    ItalicFont={Fira Sans Italic},%
+    BoldFont={Fira Sans SemiBold},%
+    BoldItalicFont={Fira Sans Italic}%
+]{Fira Sans Regular}
+
+
+% ================================================
+%   Colors
+% ================================================
+
+\definecolor{green}{RGB}{185,205,79}
+\definecolor{blue}{RGB}{0,152,161}
+\definecolor{bokugreen}{rgb}{79,183,71}
+\definecolor{biotopblue}{rgb}{0,0,255}
+\definecolor{biotopred}{rgb}{255,0,0}
+\definecolor{biotechteal}{rgb}{74,177,213}
+\definecolor{black}{RGB}{62,61,64}
+\definecolor{biotopgrey}{RGB}{221,221,221}
+
+
+\setbeamercolor{structure}{fg=black}
+\setbeamercolor{acibcolor}{fg=green}
+\setbeamercolor{acibcolorheadline}{fg=black,bg=green!15}
+\setbeamercolor{biotopcolor}{fg=gray}
+\setbeamercolor{block body}{bg=biotopgrey!50}
+\setbeamercolor{block title}{fg=black, bg=biotopgrey}
+\setbeamercolor{itemize item}{fg=black}
+\setbeamercolor{itemize subitem}{fg=black}
+\setbeamercolor{section number projected}{bg = biotopgrey, fg = white}
+
+\setbeamercolor{alerted text}{fg=black}
 
 
 % TODO: Fix this. @ in package is different
@@ -74,11 +109,15 @@
 
 
     \begin{tikzpicture}[remember picture,overlay]
-        \node[anchor=north east] (aciblogo) [xshift=-105pt,yshift=-10pt]
+        % \node[anchor=north east] (aciblogo) [xshift=-105pt,yshift=-10pt]
+        %     at (current page.north east)
+        % { \includegraphics[height=1.2cm]{logos/logo_acib_500.png} };
+        \node[anchor=south east] (bokulogo) [xshift=-15pt,yshift=10pt]
+            at (current page.south east)
+        { \includegraphics[height=1.0cm]{logos/BOKU_Hauptlogo_CMYK} };
+        \node[anchor=north east] (imicslogo) [xshift=-15pt,yshift=-10pt]
             at (current page.north east)
-        { \includegraphics[height=1.2cm]{logos/logo_acib_500.png} };
-        \node (bokulogo) [base right=2pt of aciblogo]
-        { \includegraphics[height=1.0cm]{logos/imics.jpg} };
+        { \includegraphics[height=1.0cm]{logos/imics-logo.jpg} };
 
         {
             \usebeamercolor{biotopcolor}
@@ -122,14 +161,11 @@
             \node[anchor=south west] (biotoplogo)
                 at ($(current page.south west) + (0, 0)$)
                 { \includegraphics[height=0.8cm]{logos/biotop_dim_colors.png} };
-            \node[anchor = south east] (imicslogo)
+            \node[anchor = south east] (bokulogo)
                 at ($(current page.south east) + (-0.15, 0.08)$)
-                {\includegraphics[height = .5cm]{logos/imics.jpg}};
-            \node[anchor = south east] (aciblogo)
-                [left=.1 of imicslogo]
-                {\includegraphics[height=.5cm]{logos/logo_acib_500.png}};
+                {\includegraphics[height = .5cm]{logos/BOKU_Hauptlogo_CMYK}};
             \node[anchor = south east] (fwflogo)
-                [below left = -0.65 and -0.05 of aciblogo]
+                [below left = -0.72 and -0.05 of bokulogo]
                 {\includegraphics[height=.7cm]{logos/FWF_Logo_Zusatz_Dunkelblau_RGB_DE}};
             \node[anchor=south] (slidenumber)
                 at ($(current page.south) + (0, .08)$)
