@@ -1,4 +1,7 @@
-\ProvidesPackage{beamerthemebiotop}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{biotop}
+
+\LoadClass[aspectratio=169]{beamer}
 
 \RequirePackage{tikz}
 \RequirePackage{setspace}
@@ -22,11 +25,23 @@
 % \useoutertheme{split}
 
 
-\setsansfont[%
-    ItalicFont={Fira Sans Italic},%
-    BoldFont={Fira Sans SemiBold},%
-    BoldItalicFont={Fira Sans Italic}%
-]{Fira Sans Regular}
+\DeclareOption{fira}{%
+  \setsansfont[%
+  ItalicFont={Fira Sans Italic},%
+  BoldFont={Fira Sans SemiBold},%
+  BoldItalicFont={Fira Sans Italic}%
+  ]{Fira Sans Regular}
+}
+
+\DeclareOption{work}{%
+  \setsansfont[%
+  ItalicFont={Work Sans Italic},%
+  BoldFont={Work Sans SemiBold},%
+  BoldItalicFont={Work Sans Italic}%
+  ]{Work Sans Regular}
+}
+
+\ProcessOptions\relax
 
 
 % ================================================
@@ -41,6 +56,9 @@
 \definecolor{biotechteal}{rgb}{74,177,213}
 \definecolor{black}{RGB}{62,61,64}
 \definecolor{biotopgrey}{RGB}{221,221,221}
+\definecolor{boku-cool-green}{RGB}{0,170,90}
+\definecolor{boku-grape-purple}{RGB}{75,40,140}
+\definecolor{boku-apricot-orange}{RGB}{230,100,30}
 
 
 \setbeamercolor{structure}{fg=black}
