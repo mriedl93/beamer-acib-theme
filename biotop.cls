@@ -1,8 +1,24 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{biotop}
 
+% Internal variables
+\newif\iffira
+\newif\ifwork
+
+% Options
+\DeclareOption{firafont}{\firatrue}
+\DeclareOption{workfont}{\worktrue}
+
+\DeclareOption{handout}{%
+  \PassOptionsToClass{\CurrentOption}{beamer}
+}
+\ProcessOptions\relax
+
+% Load Beamer class
 \LoadClass[aspectratio=169]{beamer}
 
+
+% Packages
 \RequirePackage{tikz}
 \RequirePackage{setspace}
 \RequirePackage{fontspec}
@@ -13,36 +29,23 @@
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}
 
-% \definecolor{acibgreen}{rgb}{26,229,26}
-% \definecolor{bokugreen}{rgb}{79,183,71}
-% \definecolor{biotopblue}{rgb}{0,0,255}
-% \definecolor{biotopred}{rgb}{255,0,0}
-% \definecolor{biotechteal}{rgb}{74,177,213}
-% \definecolor{black}{rgb}{0,0,0}
-% \definecolor{biotopgrey}{RGB}{221,221,221}
-%
-% \useoutertheme{shadow}
-% \useoutertheme{split}
 
-
-\DeclareOption{fira}{%
+% Set fonts
+\iffira
   \setsansfont[%
   ItalicFont={Fira Sans Italic},%
   BoldFont={Fira Sans SemiBold},%
   BoldItalicFont={Fira Sans Italic}%
   ]{Fira Sans Regular}
-}
+\fi
 
-\DeclareOption{work}{%
+\ifwork
   \setsansfont[%
   ItalicFont={Work Sans Italic},%
   BoldFont={Work Sans SemiBold},%
   BoldItalicFont={Work Sans Italic}%
   ]{Work Sans Regular}
-}
-
-\ProcessOptions\relax
-
+\fi
 
 % ================================================
 %   Colors
