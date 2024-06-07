@@ -61,15 +61,6 @@
 \definecolor{boku-apricot-orange}{RGB}{230,100,30}
 
 
-\setbeamercolor{structure}{fg=black}
-\setbeamercolor{acibcolor}{fg=green}
-\setbeamercolor{acibcolorheadline}{fg=black,bg=green!15}
-\setbeamercolor{biotopcolor}{fg=gray}
-\setbeamercolor{block body}{bg=biotopgrey!50}
-\setbeamercolor{block title}{fg=black, bg=biotopgrey}
-\setbeamercolor{itemize item}{fg=black}
-\setbeamercolor{itemize subitem}{fg=black}
-\setbeamercolor{section number projected}{bg = biotopgrey, fg = white}
 
 \setbeamercolor{alerted text}{fg=black}
 
@@ -83,69 +74,65 @@
 
 
 \setbeamerfont{title}{series=\bfseries}
-\setbeamerfont{title}{size=\Large}
-\setbeamerfont{frametitle}{size=\Large}
-\setbeamerfont{framesubtitle}{size=\small}
+\setbeamerfont{title}{size=\large}
+\setbeamercolor{title}{fg = white}
 \setbeamerfont{author}{size=\normalsize}
 \setbeamerfont{date}{size=\scriptsize}
 \setbeamerfont{institute}{size=\small}
+
+\setbeamerfont{frametitle}{size=\Large}
+\setbeamerfont{framesubtitle}{size=\small}
+
+\setbeamercolor{structure}{fg=black}
+\setbeamercolor{biotopcolor}{fg=gray}
+\setbeamercolor{block body}{bg=boku-cool-green!20}
+\setbeamercolor{block title}{fg=white, bg=boku-cool-green}
+\setbeamerfont{block title}{series = \bfseries}
+
+\setbeamertemplate{itemize item}[square]
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{section in toc}[square]
+\setbeamercolor{itemize item}{fg=boku-cool-green}
+\setbeamercolor{itemize subitem}{fg=boku-cool-green}
+
+\setbeamercolor{section number projected}{bg = biotopgrey, fg = white}
+
+\setbeamertemplate{navigation symbols}{}
 
 \setbeamerfont{alerted text}{series=\bfseries}
 
 
 \setbeamertemplate{title page}{%
 
-    \begin{tikzpicture}
-    [remember picture, overlay]
-    {
-        \node [anchor=base west] at ($(current page.north west) + (1, -1.5) $)
-        {\usebeamerfont{date} \insertevent, \insertdate};
+  \hspace{-20pt}
+  \includegraphics[width = .35\textwidth]{beamer-acib-theme/logos/biotop-logo-new_BW.png}
+
+    \vspace*{20pt}
+    {%
+        \usebeamerfont{title}
+        \usebeamercolor[fg]{title}
+        \inserttitle
     }
-    \end{tikzpicture}
+    \par\vspace{20pt}
 
-    \vspace*{40pt}
-
-
-    \begin{center}
-        {%
-            \usebeamerfont{title}
-            \inserttitle
-        }
-        \par\vspace{20pt}
-
-        {%
-            \usebeamerfont{author}
-            \insertauthor
-        }
-        \par\vspace{12pt}
-        {%
-            \usebeamerfont{institute}
-            \insertinstitute
-        }
-        \par\medskip
-    \end{center}
+    {%
+        \usebeamerfont{author}
+        \usebeamercolor[fg]{title}
+        \insertauthor
+    }
+    \par\vspace{12pt}
+    {%
+        \usebeamerfont{institute}
+        \usebeamercolor[fg]{title}
+        \insertinstitute
+    }
+    \par\medskip
 
 
     \begin{tikzpicture}[remember picture,overlay]
-        % \node[anchor=north east] (aciblogo) [xshift=-105pt,yshift=-10pt]
-        %     at (current page.north east)
-        % { \includegraphics[height=1.2cm]{logos/logo_acib_500.png} };
-        \node[anchor=south east] (bokulogo) [xshift=-15pt,yshift=10pt]
-            at (current page.south east)
-        { \includegraphics[height=1.0cm]{logos/BOKU_Hauptlogo_CMYK} };
-        \node[anchor=north east] (imicslogo) [xshift=-15pt,yshift=-10pt]
-            at (current page.north east)
-        { \includegraphics[height=1.0cm]{logos/imics-logo.jpg} };
-
-        {
-            \usebeamercolor{biotopcolor}
-            \draw[color=white, fill=biotopgrey] (current page.south west) --
-                ++(0, 1.45) -- ++(4.2, -1.45) -- cycle;
-            \node[anchor=south west] (biotoplogo)
-                at ($(current page.south west) + (0, 0)$)
-                { \includegraphics[height=0.8cm]{logos/biotop_dim_colors.png} };
-        }
-
+      \node[anchor=north east] (muthgasse)
+      at (current page.north east) [xshift = .2cm, yshift = 1cm]
+        { \includegraphics[height = 1.1\paperheight]{logos/foto-muthgasse.png} };
     \end{tikzpicture}
 }
 
@@ -155,7 +142,7 @@
 \setbeamertemplate{frametitle}{%
     \begin{adjustwidth}{-1em}{0em}
         {%
-            \usebeamerfont{frametitle}\insertframetitle\vskip3pt
+          \vspace{6pt}\usebeamerfont{frametitle}\insertframetitle\vskip3pt
         }%
         \ifx\insertframesubtitle\@empty\else%
             {%
@@ -172,22 +159,29 @@
     \end{beamercolorbox}
 
     {
-        \usebeamercolor{biotopcolor}
         \begin{tikzpicture}[remember picture,overlay]
-            \draw[color=white, fill=biotopgrey] (current page.south west) --
-                ++(0, 1.4) -- ++(4, -1.4) -- cycle;
-            \node[anchor=south west] (biotoplogo)
-                at ($(current page.south west) + (0, 0)$)
-                { \includegraphics[height=0.8cm]{logos/biotop_dim_colors.png} };
-            \node[anchor = south east] (bokulogo)
-                at ($(current page.south east) + (-0.15, 0.08)$)
-                {\includegraphics[height = .5cm]{logos/BOKU_Hauptlogo_CMYK}};
-            \node[anchor = south east] (fwflogo)
-                [below left = -0.72 and -0.05 of bokulogo]
-                {\includegraphics[height=.7cm]{logos/FWF_Logo_Zusatz_Dunkelblau_RGB_DE}};
-            \node[anchor=south] (slidenumber)
-                at ($(current page.south) + (0, .08)$)
-                {\scriptsize \insertframenumber};
+          % \draw[color=white, fill=boku-cool-green] (current page.south west) --
+          %       ++(0, 1.4) -- ++(4, -1.4) -- cycle;
+          % \draw[color=white, fill=boku-cool-green] (current page.south west) --
+          %       ++(0, 1.4) -- ++(4, 0) -- ++(0, -1.4) -- cycle;
+          \node[anchor = south west] (biotoplogo)
+            at ($(current page.south west) + (0,0)$)
+            { \includegraphics[width = 2cm]{logos/biotop-logo-new_Color_short.png} };
+          \node[anchor = south west] (footline)
+            at ($(current page.south west) + (3, 0.2)$)
+            {\footnotesize \insertauthor\ --- \insertevent };
+            % \node[anchor=south west] (biotoplogo)
+            %     at ($(current page.south west) + (0, 0)$)
+            %     { \includegraphics[height=0.8cm]{logos/biotop_dim_colors.png} };
+            % \node[anchor = south east] (bokulogo)
+            %     at ($(current page.south east) + (-0.15, 0.08)$)
+            %     {\includegraphics[height = .5cm]{logos/BOKU_Hauptlogo_CMYK}};
+            % \node[anchor = south east] (fwflogo)
+            %     [below left = -0.72 and -0.05 of bokulogo]
+            %     {\includegraphics[height=.7cm]{logos/FWF_Logo_Zusatz_Dunkelblau_RGB_DE}};
+            \node[anchor=south east] (slidenumber)
+                at ($(current page.south east) + (-0.4, 0.2)$)
+                {\small \insertframenumber};
         \end{tikzpicture}
     }
     % \begin{tikzpicture}[remember picture,overlay]
@@ -213,8 +207,3 @@
     % \end{beamercolorbox}
 }
 
-\setbeamertemplate{itemize item}[square]
-\setbeamertemplate{itemize subitem}[circle]
-\setbeamertemplate{section in toc}[square]
-
-\setbeamertemplate{navigation symbols}{}
