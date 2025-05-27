@@ -9,3 +9,5 @@ if [[ ! -d figures ]]; then
 fi
 
 ln -s beamer-acib-theme/Makefile .
+
+cp beamer-acib-theme/presentation.tex .
