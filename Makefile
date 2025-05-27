@@ -4,7 +4,7 @@ ifeq ($(shell hostname),lenovarch)
 	texenv =
 else ifeq ($(shell hostname),yawin)
 	# texenv = docker exec -it $(CONTAINER_NAME)
-	texenv = distrobox enter latex_distrobox --
+	texenv = distrobox enter latex --
 else
 	texenv =
 endif

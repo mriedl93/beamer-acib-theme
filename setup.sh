@@ -1,8 +1,11 @@
 #!/bin/bash
 
 if [[ ! -d build ]]; then
-    mkdir build
+  mkdir build
+fi
+
+if [[ ! -d figures ]]; then
+  mkdir figures
 fi
 
 ln -s beamer-acib-theme/Makefile .
-ln -s beamer-acib-theme/logos .

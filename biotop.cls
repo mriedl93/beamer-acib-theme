@@ -4,10 +4,12 @@
 % Internal variables
 \newif\iffira
 \newif\ifwork
+\newif\ifbiotop
 
 % Options
 \DeclareOption{firafont}{\firatrue}
 \DeclareOption{workfont}{\worktrue}
+\DeclareOption{biotop}{\biotoptrue}
 
 \DeclareOption{handout}{%
   \PassOptionsToClass{\CurrentOption}{beamer}
@@ -78,7 +80,7 @@
 
 \setbeamerfont{title}{series=\bfseries}
 \setbeamerfont{title}{size=\large}
-\setbeamercolor{title}{fg = white}
+\setbeamercolor{title}{fg = black}
 \setbeamerfont{author}{size=\normalsize}
 \setbeamerfont{date}{size=\scriptsize}
 \setbeamerfont{institute}{size=\small}
@@ -107,8 +109,12 @@
 
 \setbeamertemplate{title page}{%
 
-  \hspace{-20pt}
-  \includegraphics[width = .35\textwidth]{beamer-acib-theme/logos/biotop-logo-new_BW.png}
+  % \hspace{-20pt}%
+  \ifbiotop%
+  \includegraphics[width = .35\textwidth]{logos/biotop-logo-new_Color_short.png}%
+  \else%
+  \includegraphics[width = .20\textwidth]{logos/BOKU_Hauptlogo_CMYK.pdf}%
+  \fi%
 
     \vspace*{20pt}
     {%
@@ -128,6 +134,13 @@
         \usebeamerfont{institute}
         \usebeamercolor[fg]{title}
         \insertinstitute
+    }
+    \par\vspace{12pt}
+    {%
+        \usebeamerfont{institute}
+        \usebeamercolor[fg]{title}
+        \insertevent\newline%
+        \insertdate
     }
     \par\medskip
 
@@ -168,8 +181,14 @@
           % \draw[color=white, fill=boku-cool-green] (current page.south west) --
           %       ++(0, 1.4) -- ++(4, 0) -- ++(0, -1.4) -- cycle;
           \node[anchor = south west] (biotoplogo)
-            at ($(current page.south west) + (0,0)$)
-            { \includegraphics[width = 2cm]{logos/biotop-logo-new_Color_short.png} };
+          at ($(current page.south west) + (0.2,0.1)$)
+          {%
+            \ifbiotop%
+            \includegraphics[height = 0.9cm]{logos/biotop-logo-new_Color_short.png}%
+          \else%
+            \includegraphics[height = 0.9cm]{logos/BOKU_Hauptlogo_CMYK.pdf}%
+          \fi%
+          };
           \node[anchor = south west] (footline)
             at ($(current page.south west) + (3, 0.2)$)
             {\footnotesize \insertauthor\ --- \insertevent };

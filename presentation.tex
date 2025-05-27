@@ -1,36 +1,36 @@
-\documentclass[aspectratio=169]{beamer}
+\documentclass[firafont]{beamer-acib-theme/biotop}
 
-\usepackage{beamer-acib-theme/beamerthemebiotop}
 \usepackage{beamer-acib-theme/utils}
 
-\title{Presentation title}
-\author{Markus Riedl}
-\event{Conference/meeting}
-\date{\today} % \formatdate{30}{08}{2022}
-\institute{University of Natural Resources and Life Sciences, Vienna}
+\graphicspath{
+{beamer-acib-theme}
+{figures}
+}
 
+\usepackage{emoji}
+
+\title{Presentation}
+\author{Markus Riedl}
+\event{Event}
+\date{\today}
+% \date{\formatdate{27}{05}{2025}} % WARN: Change the date!
+\institute{BOKU}
 
 \begin{document}
 
-\begin{frame}[plain]
-\titlepage
+\begin{frame}[plain,label=title]
+  \titlepage
 \end{frame}
 
-\section{Introduction}
-
-\subsection{Chinese Hamster Ovary}
+% ----------------------------------------------
 
 \begin{frame}
-    \frametitle{Title}
-    \framesubtitle{Subtitle}
+  \frametitle{Title}
 
-    Content
+  Content
+
 \end{frame}
 
-\begin{frame}
-    \frametitle{Title2}
-
-    Content2
-\end{frame}
+% ----------------------------------------------
 
 \end{document}
