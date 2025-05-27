@@ -12,15 +12,7 @@ Setup:
 bash beamer-acib-theme/setup.sh
 ```
 
-In the .tex header (e.g. for BioToP template):
-
-```tex
-\documentclass[aspectratio=169]{beamer}
-
-\usepackage{beamer-acib-theme/beamerthembiotop}
-\usepackage{beamer-acib-theme/beamercolorthembiotop}
-\usepackage{beamer-acib-theme/utils}
-```
+Use the template file `presentation.tex` to create the presentation now.
 
 ## Utility functions
 
@@ -44,4 +36,35 @@ Creates a grid for easier absolute placements.
 \gada
 ```
 
+### `\gadacm`
+
+Same but with cm as measure instead of from 0-1.
+
+### `\abstikz`
+
+```tex
+\abstikz{ <content> }
+```
+
+Short for the absolute placement with tikz.
+
+### `\txt`
+
+```tex
+\abstikz{ x }{ y }{ options }{ text }
+```
+
+Absolute placement of text.
+
+### `\kastl`
+
+Don't remember the purpose of that.
+
+```tex
+\kastl{ color }
+```
+
+### `\luain`
+
+Short for evaluation of Lua code in latex.
 
