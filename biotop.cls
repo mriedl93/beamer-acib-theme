@@ -80,7 +80,7 @@
 
 \setbeamerfont{title}{series=\bfseries}
 \setbeamerfont{title}{size=\large}
-\setbeamercolor{title}{fg = black}
+\setbeamercolor{title}{fg = white}
 \setbeamerfont{author}{size=\normalsize}
 \setbeamerfont{date}{size=\scriptsize}
 \setbeamerfont{institute}{size=\small}
@@ -113,7 +113,7 @@
   \ifbiotop%
   \includegraphics[width = .35\textwidth]{logos/biotop-logo-new_Color_short.png}%
   \else%
-  \includegraphics[width = .20\textwidth]{logos/BOKU_Hauptlogo_CMYK.pdf}%
+  \includegraphics[width = .20\textwidth]{logos/BOKU_Hauptlogo_Negativ_Hell_RGB.png}%
   \fi%
 
     \vspace*{20pt}
@@ -123,7 +123,6 @@
         \inserttitle
     }
     \par\vspace{20pt}
-
     {%
         \usebeamerfont{author}
         \usebeamercolor[fg]{title}
